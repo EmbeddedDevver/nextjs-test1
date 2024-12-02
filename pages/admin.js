@@ -1,4 +1,4 @@
-import { supabase } from '../utils/supabase';
+
 
 // error message verwijdert. 
 export default function AdminPage({ devices }) {
