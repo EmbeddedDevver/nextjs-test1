@@ -3,6 +3,7 @@ import { supabase } from '../utils/supabase'; // Zorg dat dit verwijst naar jouw
 export async function getServerSideProps() {
     const { data: devices, error } = await supabase.from('devices').select('*');
 
+    console.log('Devices Error:', error); // Debugging
     console.log('Devices:', devices); // Debugging
     if (error) {
         console.error('Supabase error:', error);
@@ -13,6 +14,7 @@ export async function getServerSideProps() {
 
 
 export default function AdminPage({ devices }) {
+    console.log('wp:adminpage');
     return (
         <div>
             <h1>Admin Dashboard</h1>
