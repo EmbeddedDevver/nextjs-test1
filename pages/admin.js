@@ -1,16 +1,16 @@
 import { supabase } from '../utils/supabase'; // Zorg dat dit verwijst naar jouw Supabase-client
 
 export async function getServerSideProps() {
-    // Haal de apparaten op vanuit de 'devices'-tabel
     const { data: devices, error } = await supabase.from('devices').select('*');
 
+    console.log('Devices:', devices); // Debugging
     if (error) {
-        console.error('Error fetching devices:', error); // Log eventuele fouten
+        console.error('Supabase error:', error);
     }
 
-    // Retourneer altijd een array, zelfs als er geen data is
     return { props: { devices: devices || [] } };
 }
+
 
 export default function AdminPage({ devices }) {
     return (
